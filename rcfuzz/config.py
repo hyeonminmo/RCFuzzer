@@ -20,8 +20,8 @@ CRASH_DIR = 'crashes'
 CONFIG: Dict = {
     # these will be default parameters for cli.py
     'scheduler': {
-        'explore_time': 600,
-        'exploit_time': 600,
+        'collection_time': 600,
+        'execution_time': 600,
         'coverage_update_time': 30,
         'sync_time': 300,
         'timeout': '24h'

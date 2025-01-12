@@ -22,8 +22,8 @@ class ArgsParser(Tap):
     output: Path
     fuzzer: List[Fuzzer]
     target: str
-    explore: int
-    exploit: int
+    collection: int
+    execution: int
     sync: int
     timeout: str
     empty_seed: bool
@@ -37,8 +37,8 @@ class ArgsParser(Tap):
         global config
         # NOTE: get default value from config, and overwritable from argv
         DEFAULT_SYNC_TIME = config['scheduler']['sync_time']
-        DEFAULT_EXPLORE_TIME = config['scheduler']['explore_time']
-        DEFAULT_EXPLOIT_TIME = config['scheduler']['exploit_time']
+        DEFAULT_COLLECTION_TIME = config['scheduler']['collection_time']
+        DEFAULT_EXECUTION_TIME = config['scheduler']['execution_time']
         available_fuzzers = list(config['fuzzer'].keys())
         available_targets = list(config['target'].keys())
 
@@ -68,15 +68,15 @@ class ArgsParser(Tap):
             required=True,  # only one target allowed
             help="target program to fuzz")
 
-        self.add_argument("--explore",
+        self.add_argument("--collection",
                           type=int,
-                          default=DEFAULT_EXPLORE_TIME,
-                          help='explore phase time (Time_{explore})')
+                          default=DEFAULT_COLLECTION_TIME,
+                          help='collection phase time (Time_{collection})')
 
-        self.add_argument("--exploit",
+        self.add_argument("--execution",
                           type=int,
-                          default=DEFAULT_EXPLOIT_TIME,
-                          help='exploit phase time (Time_{exploit})')
+                          default=DEFAULT_EXECUTION_TIME,
+                          help='execution phase time (Time_{execution})')
 
         self.add_argument("--sync",
                           type=int,
