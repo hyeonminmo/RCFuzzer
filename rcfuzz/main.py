@@ -52,8 +52,8 @@ LOG_DATETIME: str
 LOG_FILE_NAME: str
 
 # how much time to reschedule
-EXPLORE_TIME: int
-EXPLOIT_TIME: int
+COLLECTION_TIME: int
+EXECUTION_TIME: int
 
 SYNC_TIME: int
 
@@ -416,7 +416,7 @@ def update_fuzzer_log(fuzzers):
 
 
 def thread_update_fuzzer_log(fuzzers):
-    update_time = min(60, EXPLORE_TIME, SYNC_TIME, EXPLOIT_TIME)
+    update_time = min(60, COLLECTION_TIME, SYNC_TIME, EXECUTION_TIME)
     while not is_end():
         update_fuzzer_log(fuzzers)
         time.sleep(update_time)
@@ -1206,8 +1206,8 @@ def init_cgroup():
 
 
 def main():
-    global LOG, ARGS, TARGET, FUZZERS, TARGET, SYNC_TIME, EXPLORE_TIME
-    global EXPLOIT_TIME, JOBS, OUTPUT, INPUT, LOG_DATETIME, LOG_FILE_NAME
+    global LOG, ARGS, TARGET, FUZZERS, TARGET, SYNC_TIME, COLLECTION_TIME
+    global EXECUTION_TIME, JOBS, OUTPUT, INPUT, LOG_DATETIME, LOG_FILE_NAME
     global CPU_ASSIGN
     global START_TIME
     global RUNNING
@@ -1257,8 +1257,8 @@ def main():
     LOG['algorithm'] = None
 
     SYNC_TIME = ARGS.sync
-    EXPLORE_TIME = ARGS.explore
-    EXPLOIT_TIME = ARGS.exploit
+    COLLECTION_TIME = ARGS.explore
+    EXECUTION_TIME = ARGS.exploit
 
     # NOTE: default is 1 core
     JOBS = 1
@@ -1357,8 +1357,8 @@ def main():
     else:
         diff_threshold = ARGS.threshold
         scheduler = Schedule_RCFuzz(fuzzers=FUZZERS,tsFuzzers=tsFuzzers,
-                                      explore_time=EXPLORE_TIME,
-                                      exploit_time=EXPLOIT_TIME,
+                                      explore_time=COLLECTION_TIME,
+                                      exploit_time=EXECUTION_TIME,
                                       diff_threshold=diff_threshold)
         algorithm = 'rcfuzz'
 
