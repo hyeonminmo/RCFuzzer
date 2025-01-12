@@ -71,12 +71,12 @@ class ArgsParser(Tap):
         self.add_argument("--collection",
                           type=int,
                           default=DEFAULT_COLLECTION_TIME,
-                          help='collection phase time (Time_{collection})')
+                          help='collection phase time (default = 600s)')
 
         self.add_argument("--execution",
                           type=int,
                           default=DEFAULT_EXECUTION_TIME,
-                          help='execution phase time (Time_{execution})')
+                          help='execution phase time (default = 600s)')
 
         self.add_argument("--sync",
                           type=int,
@@ -104,12 +104,12 @@ class ArgsParser(Tap):
         self.add_argument("--diff",
                           type=int,
                           default=100,
-                          help="the branch difficulty")
+                          help="the branch difficulty(default = 100)")
 
         self.add_argument("--threshold",
                           type=int,
                           default=10,
-                          help="the bitmap difference threshold")
+                          help="the bitmap difference threshold(default = 10)")
 
         self.add_argument("--tar",
                           action="store_true",
