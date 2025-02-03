@@ -104,7 +104,7 @@ rcfuzz -o output -T 24h -f afl fairfuzz aflfast qsym -t exiv2
 - `--diff`: the branch difficulty (default: 100)
 - `--threshold`: the bitmap difference threshold (default: 10)
 
-##Authors
+## Authors
 - Hyeonmin Mo <hyeonminmo@hanyang.ac.kr>
 - Jongmun Yang <jongmunyang@hanyang.ac.kr>
 - Yunho Kim <yunhokim@hanyang.ac.kr>
