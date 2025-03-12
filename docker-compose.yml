@@ -1,4 +1,4 @@
-# docker-compose run --rm -v $DATA:/work/autofz
+# docker-compose run --rm -v $DATA:/work/rcfuzz
 version: '2.4'
 services:
   autofz:

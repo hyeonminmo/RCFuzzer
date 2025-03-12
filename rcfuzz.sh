@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
-# /work/autofz can be anything
-# autofz.sh run --rm -v data:/work/autofz -w /work/autofz autofz
+# /work/rcfuzz can be anything
+# rcfuzz.sh run --rm -v data:/work/rcfuzz -w /work/rcfuzz rcfuzz
 
 SCRIPT_DIR=$(dirname $(realpath $0))
 

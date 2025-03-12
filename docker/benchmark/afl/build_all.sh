@@ -270,4 +270,100 @@ cd /rcfuzz_bench/unibench/jasper-2.0.12 && cmake -DJAS_ENABLE_SHARED=OFF -DALLOW
         make clean && cd /rcfuzz_bench/unibench/libpcap-1.8.1 && make clean
 } &
 
+cd /rcfuzz_bench/magma && \
+    ls *.tar.gz|xargs -i tar xf '{}' &&\
+    rm -r *.tar.gz &&\
+    ls -alh
+
+
+magma_targets=(
+    libsndfile
+    libtiff-read_rgba
+    libtiff-tiffcp
+    lua
+    php-exif
+    php-json
+    php-parser
+    php-unserialize
+    poppler-pdf
+    poppler-pdfimage
+    poppler-pdftoppm
+)
+
+for magma_target in "${magma_targets[@]}";
+
+do
+    mkdir -p /d/p/justafl/magma/$magma_target
+    mkdir -p /d/p/aflasan/magma/$magma_target
+done
+
+{
+     cd /rcfuzz_bench/magma/libsndfile && \
+        cp sndfile_afl /d/p/justafl/magma/libsndfile/libsndfile && \
+        cp sndfile_asan /d/p/aflasan/magma/libsndfile/libsndfile
+} &
+
+{
+     cd /rcfuzz_bench/magma/libtiff-read_rgba && \
+        cp libtiff-read_rgba_afl /d/p/justafl/magma/libtiff-read_rgba/libtiff-read_rgba && \
+        cp libtiff-read_rgba_asan /d/p/aflasan/magma/libtiff-read_rgba/libtiff-read_rgba
+} &
+
+{
+     cd /rcfuzz_bench/magma/libtiff-tiffcp && \
+        cp libtiff-tiffcp_afl /d/p/justafl/magma/libtiff-tiffcp/libtiff-tiffcp && \
+        cp libtiff-tiffcp_asan /d/p/aflasan/magma/libtiff-tiffcp/libtiff-tiffcp
+} &
+
+{
+     cd /rcfuzz_bench/magma/lua && \
+        cp liblua_afl.a /d/p/justafl/magma/lua/liblua.a && \
+        cp lua_afl /d/p/justafl/magma/lua/lua && \
+        cp liblua_asan.a /d/p/aflasan/magma/lua/liblua.a && \
+        cp lua_asan /d/p/aflasan/magma/lua/lua
+} &
+
+{
+     cd /rcfuzz_bench/magma/php-exif && \
+        cp exif_afl /d/p/justafl/magma/php-exif/php-exif && \
+        cp exif_asan /d/p/aflasan/magma/php-exif/php-exif
+} &
+
+{
+     cd /rcfuzz_bench/magma/php-json && \
+        cp json_afl /d/p/justafl/magma/php-json/php-json && \
+        cp json_asan /d/p/aflasan/magma/php-json/php-json
+} &
+
+{
+     cd /rcfuzz_bench/magma/php-parser && \
+        cp parser_afl /d/p/justafl/magma/php-parser/php-parser && \
+        cp parser_asan /d/p/aflasan/magma/php-parser/php-parser
+} &
+
+{
+     cd /rcfuzz_bench/magma/php-unserialize && \
+        cp unserialize_afl /d/p/justafl/magma/php-unserialize/php-unserialize && \
+        cp unserialize_asan /d/p/aflasan/magma/php-unserialize/php-unserialize
+} &
+
+{
+     cd /rcfuzz_bench/magma/poppler-pdf && \
+        cp poppler-pdf_afl /d/p/justafl/magma/poppler-pdf/poppler-pdf && \
+        cp poppler-pdf_asan /d/p/aflasan/magma/poppler-pdf/poppler-pdf
+} &
+
+{
+     cd /rcfuzz_bench/magma/poppler-pdfimage && \
+        cp poppler-pdfimage_afl /d/p/justafl/magma/poppler-pdfimage/poppler-pdfimage && \
+        cp poppler-pdfimage_asan /d/p/aflasan/magma/poppler-pdfimage/poppler-pdfimage
+} &
+
+{
+     cd /rcfuzz_bench/magma/poppler-pdftoppm && \
+        cp poppler-pdftoppm_afl /d/p/justafl/magma/poppler-pdftoppm/poppler-pdftoppm && \
+        cp poppler-pdftoppm_asan /d/p/aflasan/magma/poppler-pdftoppm/poppler-pdftoppm
+} &
+
+
 wait

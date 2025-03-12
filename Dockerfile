@@ -61,6 +61,14 @@ RUN sudo apt install -y libunwind-dev
 
 RUN apt update && apt install -y protobuf-compiler cgroup-tools lcov
 
+#magma
+RUN apt-get update && \
+    apt-get install -y git make libreadline-dev zlib1g-dev libjpeg-dev libopenjp2-7-dev libpng-dev libcairo2-dev libtiff-dev liblcms2-dev libboost-dev libasound2-dev libflac-dev libogg-dev libtool libvorbis-dev libopus-dev libmp3lame-dev libmpg123-dev liblzma-dev libjpeg-turbo8-dev re2c libicu-dev
+
+RUN apt update && \
+    apt install -y libflac8 libopenjp2-7 liblcms2-2
+
+
 # New benchmark
 ## file
 RUN apt install -y make autoconf automake libtool shtool
@@ -122,7 +130,7 @@ RUN cp /fuzzer/LearnAFL/learning_engine.py /usr/local/bin
 # Reset to normal compilers
 ENV CC="gcc" CXX="g++"
 
-# start install autofz dependencies
+# start install rcfuzz dependencies
 
 # install newer python3
 RUN apt install -y --no-install-recommends make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev tk-dev ca-certificates
@@ -156,7 +164,7 @@ RUN pip install /rcfuzz
 
 ENV PATH="/rcfuzz/rcfuzz:/afl-cov:${PATH}"
 
-# Add autofz user with proper UID and GID (2000 when this image is built)
+# Add rcfuzz user with proper UID and GID (2000 when this image is built)
 
 RUN groupadd -g $GID -o $USER
 RUN adduser --disabled-password --gecos '' -u $UID -gid $GID ${USER}

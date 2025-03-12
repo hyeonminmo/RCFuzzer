@@ -563,6 +563,105 @@ CONFIG: Dict = {
             'args': {
                 'default': '@@',
             }
+        },
+        'libsndfile':{
+            'group': 'magma',
+            'seed': '/seeds/magma/libsndfile',
+            'code_dir': 'magma/libsndfile',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'libtiff-read_rgba':{
+            'group': 'magma',
+            'seed': '/seeds/magma/libtiff-read_rgba',
+            'code_dir': 'magma/libread_rgba',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'libtiff-tiffcp':{
+            'group': 'magma',
+            'seed': '/seeds/magma/libtiff-tiffcp',
+            'code_dir': 'magma/libtiff-tiffcp',
+            'args':{
+                'default': '-M @@ /dev/null',
+            },
+            'unsupported': ['angora']
+        },
+        'lua':{
+            'group': 'magma',
+            'seed': '/seeds/magma/lua',
+            'code_dir': 'magma/lua',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'php-exif':{
+            'group': 'magma',
+            'seed': '/seeds/custom/empty',
+            'code_dir': 'magma/php-exif',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'php-json':{
+            'group': 'magma',
+            'seed': '/seeds/custom/empty',
+            'code_dir': 'magma/php-json',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'php-parser':{
+            'group': 'magma',
+            'seed': '/seeds/custom/empty',
+            'code_dir': 'magma/php-parser',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'php-unserialize':{
+            'group': 'magma',
+            'seed': '/seeds/custom/empty',
+            'code_dir': 'magma/php-unserialize',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'poppler-pdf':{
+            'group': 'magma',
+            'seed': '/seeds/magma/poppler-pdf',
+            'code_dir': 'magma/poppler-pdf',
+            'args':{
+                'default': '@@',
+            },
+            'unsupported': ['angora']
+        },
+        'poppler-pdfimage':{
+            'group': 'magma',
+            'seed': '/seeds/magma/poppler-pdfimage',
+            'code_dir': 'magma/poppler-pdfimage',
+            'args':{
+                'default': '@@ /tmp/out',
+            },
+            'unsupported': ['angora']
+        },
+        'poppler-pdftoppm':{
+            'group': 'magma',
+            'seed': '/seeds/magma/poppler-pdftoppm',
+            'code_dir': 'magma/poppler-pdftoppm',
+            'args':{
+                'default': '-mono -cropbox @@',
+            },
+            'unsupported': ['angora']
         }
     }
 }

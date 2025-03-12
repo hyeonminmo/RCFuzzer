@@ -1,7 +1,7 @@
 import numpy as np
 import logging
 
-logger = logging.getLogger('autofz.thompson')
+logger = logging.getLogger('rcfuzz.thompson')
 
 class fuzzer():
     def __init__(self):
