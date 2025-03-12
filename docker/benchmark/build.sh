@@ -61,7 +61,7 @@ else
                    -t $IMAGE_PREFIX/$fuzzer \
                    -f $fuzzer/Dockerfile \
                    "${build_args[@]}" \
-                   .
+                   . 
         else
             echo "$fuzzer Dockerfile does not exist!"
             exit 1
