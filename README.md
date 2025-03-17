@@ -2,12 +2,27 @@
 
 ## Installing
 
-### required system packages
+### Required system packages
 - `docker`
 - `docker-compose`
+- `git-lfs`
+
+
+### Pull Git LFS files
+Since the PHP program exceeds 200MB in size, we use Git LFS and follow these steps:
+
+```
+git lfs install && git lfs pull
+```
+
+Git LFS (Large File Storage) helps efficiently store and track large files (e.g., model files, datasets) that Git cannot manage effectively.
+- `git lfs install` : Prepares the environment by setting up Git LFS.
+- `git lfs pull` : Downloads the large PHP program files managed via LFS from the remote repository.
+
+This ensures that all necessary files for the project are available and enables efficient version control.
 
 ### Build docker image
-We have built the docker image for you, but you want to build it by yourself; here is the process.
+To build the Docker image, follow these steps:
 
 First build baseline fuzzers and benchmarks.
 
@@ -28,7 +43,6 @@ You might need to tune `_UID` and `GID` (they are hard-coded to `2000` when buil
 #### Build Note/Warning
 
 The build script parallels the compilation process a lot by making the jobs runs in the background (by inserting `&` at the end of shell commands). It will takes a lot of CPU and RAM (especially during linking). Please remove `&` in build scripts (`build.sh` or `build_all.sh` under `docker/benchmark`) when you are building under less performant machines.
-
 
 ### Increase inotify limits
 ```sh
